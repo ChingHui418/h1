@@ -1,0 +1,43 @@
+package tw.hui.hi.tutor;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import tw.hui.h1.entity.Person;
+
+public class Hui05 {
+
+	public static void main(String[] args) throws Exception {
+		Class<String> stringCls = String.class;
+		Class<Person> memberCls = Person.class;
+		
+		System.out.println(stringCls.getName());
+		System.out.println(memberCls.getName());
+		System.out.println("---1");
+		for( Constructor<?> c : memberCls.getDeclaredConstructors() ) {
+			System.out.println(c);
+		}
+		System.out.println("---2");
+		for( Field f : memberCls.getDeclaredFields() ) {
+			System.out.printf("%s:%s:%s\n", 
+					f.getModifiers(),
+					f.getType().getSimpleName(),
+					f.getName());
+		}
+		System.out.println("---3");
+		for( Method m : memberCls.getDeclaredMethods() ) {
+			System.out.println(m);
+		}
+		System.out.println("---4");
+		Class<?> mClass = Class.forName("tw.hui.h1.entity.Person");
+		Constructor<?> c =
+			mClass.getDeclaredConstructor(long.class, String.class, String.class);
+		Object obj = c.newInstance(12L, "brad@brad.tw", "Brad");
+		Method m = mClass.getDeclaredMethod("getEmail");
+		Object result = m.invoke(obj);
+		System.out.println(result);
+		
+	}
+
+}
