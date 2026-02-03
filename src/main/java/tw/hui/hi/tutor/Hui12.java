@@ -1,0 +1,21 @@
+package tw.hui.hi.tutor;
+
+import java.util.List;
+
+import tw.hui.h1.entity.Order;
+import tw.hui.h1.entity.OrderItem;
+import tw.hui.h1.service.OrderService;
+import tw.hui.h1.service.OrderServiceImp;
+
+public class Hui12 {
+
+	public static void main(String[] args) {
+		OrderService service = new OrderServiceImp();
+
+		 Long id = service.createOrder("Eric");
+		 System.out.println(id);
+		 service.addItem(id, "item3", 2, 100);
+		 service.addItem(id, "item4", 4, 300);
+	}
+
+}
