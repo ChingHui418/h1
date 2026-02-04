@@ -3,10 +3,12 @@ package tw.hui.h1.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import tw.hui.h1.entity.Course;
 import tw.hui.h1.entity.Member;
 import tw.hui.h1.entity.MemberInfo;
 import tw.hui.h1.entity.Order;
 import tw.hui.h1.entity.OrderItem;
+import tw.hui.h1.entity.Student;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
@@ -20,6 +22,9 @@ public class HibernateUtil {
 			config.addAnnotatedClass(MemberInfo.class);
 			config.addAnnotatedClass(Order.class);
 			config.addAnnotatedClass(OrderItem.class);
+			
+			config.addAnnotatedClass(Student.class);
+			config.addAnnotatedClass(Course.class);
 			
 			sessionFactory = config.buildSessionFactory();
 		}
